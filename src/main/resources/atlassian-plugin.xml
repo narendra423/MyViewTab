@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="MyViewTab"/>  
+  <!-- add our web resources -->  
+  <web-resource key="MyViewTab-resources" name="MyViewTab Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="MyViewTab.css" location="/css/MyViewTab.css"/>  
+    <resource type="download" name="MyViewTab.js" location="/js/MyViewTab.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>MyViewTab</context> 
+  </web-resource>  
+  <web-panel name="EinsteinQuotes" i18n-name-key="einstein-quotes.name" key="einstein-quotes" location="atl.gh.issue.details.tab" weight="1000"> 
+    <description key="einstein-quotes.description">The EinsteinQuotes Plugin</description>  
+    <context-provider class="com.atlasian.plugins.jiratraining.web.contextproviders.MyContextProvider"/>  
+    <resource name="view" type="velocity" location="templates/reference-gh-issue-details-panel-1.vm"/>  
+    <resource name="icon" type="download" location="images/lightbulb.png"/>
+    <label key="gh.issue.panel.reference" />
+    <tooltip key="gh.issue.panel.reference.tooltip" />
+  </web-panel>
+  <web-section key="my_new_application_section" location="admin_applications_section">
+    <label key="my_new_application_section_name">
+
+    </label>
+  </web-section>
+  <web-item key="my_new_application_tabbed_item" section="admin_applications_section/my_new_application_section">
+    <link linkId="my_new_application_tabbed_item_link_ID">/plugins/servlet/example</link>
+    <label key="my_new_application_section_item_name">
+
+    </label>
+  </web-item>
+
+  <web-section key="my_new_add_ons_section" location="admin_plugins_menu">
+    <label key="my_new_add_ons_section_name">
+
+    </label>
+  </web-section>
+  <web-item key="my_new_add_ons_tabbed_item" section="admin_plugins_menu/my_new_add_ons_section">
+    <link linkId="my_new_add_ons_tabbed_item_link_ID">/plugins/servlet/example</link>
+    <label key="my_new_add_ons_section-item_name">
+
+    </label>
+  </web-item>
+</atlassian-plugin>
