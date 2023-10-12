@@ -5,7 +5,6 @@ pipeline {
         stage('Compile') {
             steps {
                 echo 'build has to been started'
-		REM 'atlas-version'
 		bat 'atlas-compile'
             }
         }
